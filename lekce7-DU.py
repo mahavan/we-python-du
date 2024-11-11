@@ -14,7 +14,7 @@ digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 def unique_4_digit_number():
     random.shuffle(digits)
     while digits[0] == 0:
-        random.shuffle(digits)
+        random.shuffle(digits) # Vím, že by to šlo udělat lépe, vygenerovat 1. číslici zvlášť bez 0 a pak spojit
     secret = ''.join(map(str, digits[:4]))  # Select the first 4 digits and combine them into one number
     return secret # output str
 
@@ -28,58 +28,42 @@ def print_main_menu():
 def bad_input_message():
     print("Bad input. Please try again!")
 
+"""
 
-def compare_digits_recursive(secret, guess, bulls=0, cows=0, cows_counting=0, str_bulls=''):
-    """
-    Rekurzivně porovnává tajné číslo a uživatelský odhad.
-    Vrací počet Bulls (správné číslice na správné pozici)
-    a Cows (správné číslice na špatné pozici).
-    """
-    # Základní případ: Pokud jsme dosáhli konce řetězců
+"""
+def count_bulls(secret, guess, bulls=0, cut_secret='', cut_guess=''):
     if not secret:
-        return bulls, cows
-
-    # Kontrola Bulls
+        return bulls, cut_secret, cut_guess
     if secret[0] == guess[0]:
-        str_bulls += secret[0]
-        print(f"str_bulls: {str_bulls}")
-        return compare_digits_recursive(secret[1:], guess[1:], bulls + 1, cows, cows_counting, str_bulls)
-
+        return count_bulls(secret[1:], guess[1:], bulls + 1, cut_secret, cut_guess)
     else:
-        if not cows_counting:
-            # Kontrola Cows
-            for j in range(0, len(guess)):
-                if guess[j] in secret:
-                    cows += 1
-                    print(len(guess),guess[j], j, cows)
-                else:
-                    print(guess[j], cows_counting)
-            return compare_digits_recursive(secret[1:], guess[1:], bulls, cows, cows_counting + 1, str_bulls)
-        else:
-            return compare_digits_recursive(secret[1:], guess[1:], bulls, cows, cows_counting, str_bulls)
+        cut_secret += secret[0]
+        cut_guess += guess[0]
+        return count_bulls(secret[1:], guess[1:], bulls, cut_secret, cut_guess)
 
-# Hlavní část programu
+def count_cows(cut_secret, cut_guess, cows=0):
+    for j in range(0, len(cut_guess)):
+        if cut_guess[j] in cut_secret:
+            cows += 1
+    return cows
+
 print_main_menu()
 secret = unique_4_digit_number()
-
-i = 1  # Počítadlo pokusů
+i = 1
 while True:
-    print(f"(Secret number for debugging: {secret})")  # Pro testování
+    print(f"Secret number for debugging: {secret}")
     guess = input("Guess a 4-digit number: ")
 
-    # Kontrola platnosti vstupu
     if not guess.isdigit() or len(guess) != 4:
         bad_input_message()
         continue
 
-    # Spočítáme Bulls a Cows pomocí rekurzivní funkce
-    bulls, cows = compare_digits_recursive(secret, guess)
+    bulls, cut_secret, cut_guess = count_bulls(secret, guess)
+    cows = count_cows(cut_secret, cut_guess)
     print(f"Bulls: {bulls}, Cows: {cows}")
 
-    # Kontrola, zda uživatel uhodl správně
     if bulls == 4:
         print(f"Congratulations! You guessed the number {secret}.")
         print(f"Number of trials: {i}")
         break
-
-    i += 1  # Zvýšení počítadla pokusů
+    i += 1
