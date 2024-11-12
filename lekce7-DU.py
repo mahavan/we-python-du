@@ -28,11 +28,10 @@ def print_main_menu():
 def bad_input_message():
     print("Bad input. Please try again!")
 
-"""
 
-"""
+# Compare the digits of both numbers, add number of the same digits to the Bulls and cut them off.
 def count_bulls(secret, guess, bulls=0, cut_secret='', cut_guess=''):
-    if not secret:
+    if not secret: # End of cycle - recursion
         return bulls, cut_secret, cut_guess
     if secret[0] == guess[0]:
         return count_bulls(secret[1:], guess[1:], bulls + 1, cut_secret, cut_guess)
@@ -41,6 +40,7 @@ def count_bulls(secret, guess, bulls=0, cut_secret='', cut_guess=''):
         cut_guess += guess[0]
         return count_bulls(secret[1:], guess[1:], bulls, cut_secret, cut_guess)
 
+# Use the rest of the digits to count Cows.
 def count_cows(cut_secret, cut_guess, cows=0):
     for j in range(0, len(cut_guess)):
         if cut_guess[j] in cut_secret:
@@ -64,6 +64,6 @@ while True:
 
     if bulls == 4:
         print(f"Congratulations! You guessed the number {secret}.")
-        print(f"Number of trials: {i}")
+        print(f"Number of your attempts: {i}")
         break
     i += 1
