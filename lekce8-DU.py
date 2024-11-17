@@ -60,12 +60,22 @@ Number of digits: {digits_count}""")
     with open(file2, "w", encoding="utf-8") as f2:
         f2.write(output)
 
-statistics("task2-1.txt", "task2-2.txt")
+#statistics("task2-1.txt", "task2-2.txt")
 
 """
 Task 3
 You have a text file. Delete the last line from it. Write the result to another file.
 """
+def last_line(file1, file2):
+    with open(file1, "r", encoding="utf-8") as f1:
+        lines_f1 = f1.readlines()
+    last_line = lines_f1[-1]
+    with open(file1, "w", encoding="utf-8") as f1, open(file2, "w", encoding="utf-8") as f2:
+        f2.write(last_line)
+        delete = lines_f1.pop(-1)
+        f1.writelines(lines_f1)
+
+last_line("task3-1.txt", "task3-2.txt")
 
 """
 Task 4
