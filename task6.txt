@@ -1,0 +1,4 @@
+2067 hvězd zářilo na noční obloze.
+Letadlo mělo kapacitu 192 cestujících.
+Na takovou kapacitu jako je on nemáte.
+Spočítejte kapacitu kondenzátoru!
