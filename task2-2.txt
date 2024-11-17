@@ -1,0 +1,7 @@
+File task2-1.txt:
+--------------------
+Number of characters: 47
+Number of lines: 2
+Number of vowels: 13
+Number of consonants 19
+Number of digits: 6

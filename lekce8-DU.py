@@ -20,7 +20,7 @@ def compare_text(file1, file2):
             output += data_f1[i] + data_f2[i]
     return output
 
-print(compare_text("task1-1.txt", "task1-2.txt"))
+#print(compare_text("task1-1.txt", "task1-2.txt"))
 
 """
 Task 2
@@ -32,6 +32,35 @@ Number of vowels;
 Number of consonants;
 Number of digits.
 """
+def statistics(file1, file2):
+    with open(file1, encoding="utf-8") as f1:
+        str_f1 = f1.read()
+    splitlines_f1 = str_f1.splitlines()
+    characters = len(str_f1)
+    lines = len(splitlines_f1)
+    vowels_count = 0
+    consonants_count = 0
+    digits_count = 0
+    vowels = "aeiouyáéíóúůý"
+    consonants = "bcdfghjklmnpqrstvwxyzčďřšťž"
+    for char in str_f1:
+        if char in vowels:
+            vowels_count += 1
+        elif char in consonants:
+            consonants_count += 1
+        elif char.isdigit():
+            digits_count += 1
+    output = (f"""File {file1}:
+--------------------
+Number of characters: {characters}
+Number of lines: {lines}
+Number of vowels: {vowels_count}
+Number of consonants: {consonants_count}
+Number of digits: {digits_count}""")
+    with open(file2, "w", encoding="utf-8") as f2:
+        f2.write(output)
+
+statistics("task2-1.txt", "task2-2.txt")
 
 """
 Task 3
