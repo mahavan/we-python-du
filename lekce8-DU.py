@@ -111,9 +111,26 @@ def count_words(file):
             count += 1
     return count
 
-print(f"Počet výskytů hledaného slova je: {count_words("task5.txt")}")
+#print(f"Počet výskytů hledaného slova je: {count_words("task5.txt")}")
 
 """
 Task 6
-You have a text file. Find and replace the specified word. The user determines what to search for and to what it should be replaced.
+You have a text file. Find and replace the specified word. 
+The user determines what to search for and to what it should be replaced.
 """
+def replace_word(file):
+    search = input("Zadejte slovo, které se má přepsat (rozlišuje velká a malá písmena): ")
+    with open(file, "r", encoding="utf-8") as f:
+        text = f.read()
+    words = text.split()
+    if text.find(search) != -1:
+        replace = input("Zadejte slovo, na které se má přepsat: ")
+        replaced = text.replace(search, replace)
+        with open(file, "w", encoding="utf-8") as f:
+            f.write(replaced)
+        print("Hledané slovo bylo přepsáno!")
+    else:
+        print("Hledané slovo nebylo nalezeno!")
+        return replace_word(file)
+
+replace_word("task6.txt")
