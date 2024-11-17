@@ -75,12 +75,25 @@ def last_line(file1, file2):
         delete = lines_f1.pop(-1)
         f1.writelines(lines_f1)
 
-last_line("task3-1.txt", "task3-2.txt")
+#last_line("task3-1.txt", "task3-2.txt")
 
 """
 Task 4
 You have a text file. Find the length of the longest line.
 """
+def longest_line(file):
+    with open(file, "r", encoding="utf-8") as f1:
+        lines = f1.readlines()
+    length_list = []
+    for line in lines:
+        length = len(line)
+        if "\n" in line:
+            length = length - 1
+        length_list += [length]
+    length_list.sort(reverse=True)
+    print(f"Nejdelší řádek má {length_list[0]} znaků.")
+
+longest_line("task4.txt")
 
 """
 Task 5
