@@ -82,8 +82,8 @@ Task 4
 You have a text file. Find the length of the longest line.
 """
 def longest_line(file):
-    with open(file, "r", encoding="utf-8") as f1:
-        lines = f1.readlines()
+    with open(file, "r", encoding="utf-8") as f:
+        lines = f.readlines()
     length_list = []
     for line in lines:
         length = len(line)
@@ -93,12 +93,25 @@ def longest_line(file):
     length_list.sort(reverse=True)
     print(f"Nejdelší řádek má {length_list[0]} znaků.")
 
-longest_line("task4.txt")
+#longest_line("task4.txt")
 
 """
 Task 5
 You have a text file. Count how many times the word specified by the user occurs in it.
 """
+def count_words(file):
+    search = input("Zadejte hledané slovo (nerozlišuje velká a malá písmena): ")
+    with open(file, "r", encoding="utf-8") as f:
+        text = f.read()
+    text = text.lower()
+    words = text.split()
+    count = 0
+    for word in words:
+        if word == search:
+            count += 1
+    return count
+
+print(f"Počet výskytů hledaného slova je: {count_words("task5.txt")}")
 
 """
 Task 6
