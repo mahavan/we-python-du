@@ -133,4 +133,4 @@ def replace_word(file):
         print("Hledané slovo nebylo nalezeno!")
         return replace_word(file)
 
-replace_word("task6.txt")
+#replace_word("task6.txt")
