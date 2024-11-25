@@ -5,6 +5,25 @@ color, price. Implement class methods for data input and output, provide access 
 methods.
 """
 
+class Car:
+    def __init__(self, manufacturer, model, year, engine_capacity, color, price):
+        self.manufacturer = manufacturer
+        self.model = model
+        self.year = year
+        self.engine_capacity = engine_capacity
+        self.color = color
+        self.price = price
+
+    def __str__(self):
+        return f"Car: {self.manufacturer} {self.model} {self.year} - capacity: {self.engine_capacity}, color: {self.color}, price: {self.price}"
+
+car1 = Car("Toyota", "Corolla", 2020, 1.8, "white", "$20,000")
+car2 = Car("Ford", "Mustang", 2022, 5.0, "red", "$45,000")
+car3 = Car("Audi", "A4", 2023, 2.0, "silver", "$40,000")
+
+print(car1)
+print(car2)
+print(car3)
 
 """
 Task 2
