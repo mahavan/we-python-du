@@ -49,7 +49,20 @@ Decorate the function using another function without utilizing decorator syntax.
 
 Two lines of asterisks here are the result of the decoration.
 """
+from datetime import datetime
 
+def time():
+    def asterix():
+        print("********************")
+        def current_time():
+            print("Aktuální čas: ", end="")
+            print(datetime.now().strftime("%H:%M"))
+        current_time()
+        print("********************")
+    return asterix
+
+display_time = time()
+display_time()
 
 """
 Task 3
