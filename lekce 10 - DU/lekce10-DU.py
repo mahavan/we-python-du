@@ -5,6 +5,37 @@ Use inheritance to implement a Frigate class (contains info about a frigate), a 
 about a destroyer), a Cruiser class (contains info about a cruiser).
 Each class must have the required methods.
 """
+class Ship:
+    def __init__(self, name):
+        self.name = name
+    def menu(self):
+        print("Information about ships:")
+        print(self.name)
+
+class Frigate(Ship):
+    def main_role(self):
+        print("Frigate: Anti-submarine warfare, convoy escort.")
+
+class Destroyer(Ship):
+    def main_role(self):
+        print("Destroyer: Anti-air and anti-submarine defense.")
+
+class Cruiser(Ship):
+    def main_role(self):
+        print("Cruiser: Fleet command, heavy firepower.")
+
+f1 = Frigate("HMS Montrose (UK)")
+f1.menu()
+f1.main_role()
+print()
+d1 = Destroyer("HMS Defender (UK)")
+d1.menu()
+d1.main_role()
+print()
+c1 = Cruiser("USS Ticonderoga (USA)")
+c1.menu()
+c1.main_role()
+print()
 
 
 """
