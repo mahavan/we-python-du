@@ -49,6 +49,7 @@ Decorate the function using another function without utilizing decorator syntax.
 
 Two lines of asterisks here are the result of the decoration.
 """
+print("Task 2:")
 from datetime import datetime
 
 def time():
@@ -68,13 +69,18 @@ display_time()
 Task 3
 Do Task 2 using decorator syntax.
 """
+print("Task 3:")
+def asterix(func):
+    def wrapper():
+        print("********************")
+        func()
+        print("********************")
+    return wrapper
 
-"""
-Task 4
-Create a pizza maker app. Each pizza has different ingredients. Use decorators to create different pizzas:
-Margarita;
-Four cheese;
-Capricciosa;
-Hawaiian.
-"""
+@asterix
+def current_time():
+    print("Aktuální čas: ", end="")
+    print(datetime.now().strftime("%H:%M"))
+
+current_time()
 
