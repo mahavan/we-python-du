@@ -1,4 +1,5 @@
-"""Task 1
+"""
+Task 2
 Supplement the Car class with the ability to pack and unpack data using json and pickle."""
 import json
 import pickle
@@ -76,14 +77,5 @@ print("Cars from pkl file:")
 for car in cars_from_pickle:
     print(car)
 
-
-
-"""Task 2
-Create a class containing a set of integers. The class should have the following functionality implemented:
-The sum of elements in the set.
-Arithmetic mean of elements in the set.
-Maximum of the elements in the set.
-Minimum of the elements in the set.
-Test all the possibilities of the created class using unit testing (unittest)."""
 
 
