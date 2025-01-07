@@ -7,8 +7,8 @@ class Payment:
 
 class CreditCardPayment:
     def pay(self, amount):
-        print(f"Paid {amount} using Credit Card.")
+        print(f"Paid {amount} CZK using Credit Card.")
 
 class CashPayment:
     def pay(self, amount):
-        print(f"Paid {amount} in Cash.")
+        print(f"Paid {amount} CZK in Cash.")

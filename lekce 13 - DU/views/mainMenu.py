@@ -7,7 +7,8 @@ class MainMenu:
             print("Main Menu")
             print("1. Order Pizza")
             print("2. View Sales")
-            print("3. Exit")
+            print("3. View Current Order")
+            print("4. Exit")
             choice = input("Enter choice: ")
 
             if choice == "1":
@@ -15,26 +16,21 @@ class MainMenu:
             elif choice == "2":
                 self.view_sales()
             elif choice == "3":
+                self.view_current_order()
+            elif choice == "4":
                 break
             else:
                 print("Invalid choice. Try again.")
 
     def order_pizza(self):
-        name = input("Enter pizza name: ")
-        size = input("Enter size (small/medium/large): ")
-        price = float(input("Enter base price: "))
-        pizza = Pizza(name, size, price)
-
-        while True:
-            topping_name = input("Enter topping name (or 'done'): ")
-            if topping_name == "done":
-                break
-            topping_price = float(input("Enter topping price: "))
-            topping = Topping(topping_name, topping_price)
-            pizza.add_topping(topping)
-
-        self.controller.create_order(pizza)
-        print("Pizza added to order.")
+        from views.orderMenu import OrderMenu
+        order_menu = OrderMenu(self.controller)
+        order_menu.display()
 
     def view_sales(self):
-        print(f"Total sales: {self.controller.sales.total_sales()}")
+        print(f"Total sales: {self.controller.sales.total_sales()} CZK")
+
+    def view_current_order(self):
+        print("Current Order:")
+        print(self.controller.order.list_order())
+
