@@ -29,5 +29,25 @@
             }
         ],
         "payment_method": "Cash"
+    },
+    {
+        "pizzas": [
+            {
+                "name": "Veggie",
+                "size": "small",
+                "price": 185.0,
+                "toppings": [
+                    {
+                        "name": "Mushrooms",
+                        "price": 25.0
+                    },
+                    {
+                        "name": "Olives",
+                        "price": 20.0
+                    }
+                ]
+            }
+        ],
+        "payment_method": "Credit Card"
     }
 ]

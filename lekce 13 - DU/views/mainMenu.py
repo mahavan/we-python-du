@@ -7,23 +7,23 @@ class MainMenu:
             print()
             print("Main Menu")
             print("1. Order Pizza")
-            print("2. Admin")
-            print("3. View Current Order")
+            print("2. View Current Order")
+            print("3. Cancel Current Order")
             print("4. Make Payment")
-            print("5. Cancel Current Order")
+            print("5. Admin")
             print("6. Exit")
             choice = input("Enter choice: ")
 
             if choice == "1":
                 self.order_pizza()
             elif choice == "2":
-                self.admin_access()
-            elif choice == "3":
                 self.view_current_order()
+            elif choice == "3":
+                self.cancel_current_order()
             elif choice == "4":
                 self.make_payment()
             elif choice == "5":
-                self.cancel_current_order()
+                self.admin_access()
             elif choice == "6":
                 break
             else:
@@ -38,7 +38,7 @@ class MainMenu:
         from models.auth import Auth
         from utils.parser import OrderParser
         auth = Auth()
-        password = input("Enter admin password: ")
+        password = input("Enter admin password (please type 'admin'): ")
         if auth.authenticate(password):
             print("Loading Orders from File...")
             loaded_orders = OrderParser.read_orders_from_file()
