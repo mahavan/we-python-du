@@ -9,7 +9,8 @@ class MainMenu:
             print("2. View Sales")
             print("3. View Current Order")
             print("4. Make Payment")
-            print("5. Exit")
+            print("5. Cancel Current Order")
+            print("6. Exit")
             choice = input("Enter choice: ")
 
             if choice == "1":
@@ -21,6 +22,8 @@ class MainMenu:
             elif choice == "4":
                 self.make_payment()
             elif choice == "5":
+                self.cancel_current_order()
+            elif choice == "6":
                 break
             else:
                 print("Invalid choice. Try again.")
@@ -52,3 +55,7 @@ class MainMenu:
             self.controller.process_payment("cash")
         else:
             print("Invalid payment method.")
+
+    def cancel_current_order(self):
+        self.controller.cancel_order()
+        print("The current order has been canceled.")

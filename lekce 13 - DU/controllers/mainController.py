@@ -20,3 +20,6 @@ class MainController:
         payment.process_payment(self.order.total_price())
         self.sales.record_sale(self.order)
         self.order = Order()  # Reset order after payment
+
+    def cancel_order(self):
+        self.order = Order()  # Reset the current order
