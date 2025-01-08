@@ -1,12 +1,19 @@
 class Order:
     def __init__(self):
         self.pizzas = []
+        self.payment_method = None
 
     def add_pizza(self, pizza):
         self.pizzas.append(pizza)
 
     def total_price(self):
         return sum(pizza.price for pizza in self.pizzas)
+
+    def set_payment_method(self, method):
+        self.payment_method = method
+
+    def get_payment_method(self):
+        return self.payment_method or "Unknown"
 
     def list_order(self):
         if not self.pizzas:

@@ -22,6 +22,7 @@ class Sales:
             for pizza in order.pizzas:
                 toppings = ", ".join([topping.name for topping in pizza.toppings]) or "No toppings"
                 result.append(f"  - {pizza.size.capitalize()} {pizza.name} - {pizza.price} CZK (Toppings: {toppings})")
-            result.append(f"  Total: {order.total_price()} CZK\n")
+            result.append(f"  Total: {order.total_price()} CZK")
+            result.append(f"  Payment Method: {order.get_payment_method()}\n")
         result.append(f"Overall Sales Total: {self.total_sales()} CZK")
         return "\n".join(result)

@@ -18,6 +18,7 @@ class MainController:
     def process_payment(self, method):
         payment = Payment(CreditCardPayment() if method == "card" else CashPayment())
         payment.process_payment(self.order.total_price())
+        self.order.set_payment_method("Credit Card" if method == "card" else "Cash")
         self.sales.record_sale(self.order)
         self.order = Order()  # Reset order after payment
 
