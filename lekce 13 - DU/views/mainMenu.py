@@ -35,10 +35,16 @@ class MainMenu:
 
     def admin_access(self):
         from models.auth import Auth
+        from utils.parser import OrderParser
         auth = Auth()
         password = input("Enter admin password: ")
         if auth.authenticate(password):
-            print("Sales Report:")
+            print("Loading Orders from File...")
+            loaded_orders = OrderParser.read_orders_from_file()
+            for order in loaded_orders:
+                self.controller.sales.record_sale(order)
+            print("Orders loaded successfully.")
+            print("Loaded Orders:")
             print(self.controller.sales.detailed_sales())
         else:
             print("Access Denied: Incorrect password.")
