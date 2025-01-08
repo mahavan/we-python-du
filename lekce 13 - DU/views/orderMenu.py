@@ -24,8 +24,21 @@ class OrderMenu:
         choice = int(input("Select a pizza by number: "))
         selected_pizza = pizza_options[choice - 1]
 
-        size = input("Enter size (small/medium/large): ")
-        price = selected_pizza["price"]
+        print("Choose a size:")
+        size_options = {
+            "small": 0,
+            "medium": 30,
+            "large": 60
+        }
+        for size, extra_cost in size_options.items():
+            print(f"{size.capitalize()} - {extra_cost} CZK extra")
+
+        size = input("Enter size (small/medium/large): ").lower()
+        if size not in size_options:
+            print("Invalid size, defaulting to medium.")
+            size = "medium"
+
+        price = selected_pizza["price"] + size_options[size]
         pizza = Pizza(selected_pizza["name"], size, price)
 
         print("Choose toppings:")
