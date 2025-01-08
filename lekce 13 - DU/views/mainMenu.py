@@ -6,7 +6,7 @@ class MainMenu:
         while True:
             print("Main Menu")
             print("1. Order Pizza")
-            print("2. View Sales")
+            print("2. Admin")
             print("3. View Current Order")
             print("4. Make Payment")
             print("5. Cancel Current Order")
@@ -16,7 +16,7 @@ class MainMenu:
             if choice == "1":
                 self.order_pizza()
             elif choice == "2":
-                self.view_sales()
+                self.admin_access()
             elif choice == "3":
                 self.view_current_order()
             elif choice == "4":
@@ -33,9 +33,15 @@ class MainMenu:
         order_menu = OrderMenu(self.controller)
         order_menu.display()
 
-    def view_sales(self):
-        print("Sales Report:")
-        print(self.controller.sales.detailed_sales())
+    def admin_access(self):
+        from models.auth import Auth
+        auth = Auth()
+        password = input("Enter admin password: ")
+        if auth.authenticate(password):
+            print("Sales Report:")
+            print(self.controller.sales.detailed_sales())
+        else:
+            print("Access Denied: Incorrect password.")
 
     def view_current_order(self):
         print("Current Order:")
