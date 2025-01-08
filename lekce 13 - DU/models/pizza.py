@@ -7,7 +7,7 @@ class Pizza:
 
     def add_topping(self, topping):
         self.toppings.append(topping)
-        self.price += topping.price  # Přidává cenu za přídavky
+        self.price += topping.price
 
     def __str__(self):
         toppings_str = ", ".join(topping.name for topping in self.toppings)

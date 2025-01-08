@@ -3,7 +3,6 @@ from models.order import Order
 from models.pizza import Pizza
 from models.topping import Topping
 
-
 class OrderParser:
     @staticmethod
     def write_orders_to_file(orders, filename="orders.json"):
