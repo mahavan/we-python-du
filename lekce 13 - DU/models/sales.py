@@ -16,6 +16,9 @@ class Sales:
             print("Creating new orders.json file.")
             OrderParser.write_orders_to_file(self.sales_data)
 
+    def reset_sales(self):
+        self.sales_data = []
+
     def total_sales(self):
         return sum(order.total_price() for order in self.sales_data)
 

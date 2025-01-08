@@ -4,6 +4,7 @@ class MainMenu:
 
     def display(self):
         while True:
+            print()
             print("Main Menu")
             print("1. Order Pizza")
             print("2. Admin")
@@ -41,9 +42,9 @@ class MainMenu:
         if auth.authenticate(password):
             print("Loading Orders from File...")
             loaded_orders = OrderParser.read_orders_from_file()
+            self.controller.sales.reset_sales()  # Clear current sales to avoid duplication
             for order in loaded_orders:
                 self.controller.sales.record_sale(order)
-            print("Orders loaded successfully.")
             print("Loaded Orders:")
             print(self.controller.sales.detailed_sales())
         else:
