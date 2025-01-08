@@ -1,5 +1,5 @@
 Aplikace Objednávky pizzy se spouští pomocí app.py.
-Provedené(zaplacené) objednávky se ukládají do souboru orders.json. (Na ukázku tři objednávky jsou už vytvořené.)
+Provedené (zaplacené) objednávky se ukládají do souboru orders.json. Na ukázku tři objednávky jsou už vytvořené.
 Ukázkový výpis po načtení z orders.json:
     Loading Orders from File...
     Loaded Orders:
