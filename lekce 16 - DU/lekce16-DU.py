@@ -36,7 +36,14 @@ WHERE users.username = "user2";
 # OUTPUT: [('room1',), ('room2',)]
 
 """Task 4: Zobraziť počet správ, ktoré poslal každý používateľ."""
-
+print("Task 4:")
+cur.execute("""
+SELECT users.username, COUNT(messages.id)
+FROM users
+JOIN messages ON users.id = messages.user_id
+GROUP BY users.username
+""")
+# OUTPUT: [('user1', 3), ('user2', 2), ('user3', 2)]
 
 """Task 5: Zobraziť zoznam miestností spolu s počtom správ, ktoré poslali jednotliví používatelia."""
 
