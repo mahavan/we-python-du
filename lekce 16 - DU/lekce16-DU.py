@@ -10,8 +10,9 @@ SELECT DISTINCT users.username
 FROM users
 JOIN messages ON users.id = messages.user_id
 JOIN rooms ON messages.room_id = rooms.id
-WHERE rooms.name = 'room1';
+WHERE rooms.name = "room1";
 """)
+# OUTPUT: [('user1',), ('user2',)]
 
 """Task 2: Počítať, koľko rôznych používateľov poslalo správy do jednotlivých miestností."""
 print("Task 2:")
@@ -21,11 +22,21 @@ FROM messages
 JOIN rooms ON messages.room_id = rooms.id
 GROUP BY rooms.name;
 """)
+# OUTPUT: [('room1', 2), ('room2', 3), ('room3', 1)]
 
 """Task 3: Nájsť miestnosti, do ktorých konkrétny používateľ (napr. user2) poslal správy."""
-
+print("Task 3:")
+cur.execute("""
+SELECT DISTINCT rooms.name
+FROM rooms
+JOIN messages ON rooms.id = messages.room_id
+JOIN users ON messages.user_id = users.id
+WHERE users.username = "user2";
+""")
+# OUTPUT: [('room1',), ('room2',)]
 
 """Task 4: Zobraziť počet správ, ktoré poslal každý používateľ."""
+
 
 """Task 5: Zobraziť zoznam miestností spolu s počtom správ, ktoré poslali jednotliví používatelia."""
 
