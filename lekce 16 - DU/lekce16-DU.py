@@ -46,6 +46,14 @@ GROUP BY users.username
 # OUTPUT: [('user1', 3), ('user2', 2), ('user3', 2)]
 
 """Task 5: Zobraziť zoznam miestností spolu s počtom správ, ktoré poslali jednotliví používatelia."""
+print("Task 5:")
+cur.execute("""
+SELECT rooms.name, COUNT(messages.id)
+FROM rooms
+JOIN messages ON rooms.id = messages.room_id
+GROUP BY rooms.name
+""")
+# OUTPUT: [('room1', 3), ('room2', 3), ('room3', 1)]
 
 data = cur.fetchall()
 print(data)
