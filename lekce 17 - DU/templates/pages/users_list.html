@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Users List</h2>
+    <table style="border-collapse: collapse">
+        <tr><th>Name</th><th>Age</th></tr>
+    {% for user in users %}
+        <tr><td><a href="{{ url_for('profile', id=user['id']) }}">{{ user['name'] }}</a></td><td style="text-align: center">{{ user['age'] }}</td></tr>
+    {% endfor %}
+    </table>
+{% endblock %}
